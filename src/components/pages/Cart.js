@@ -110,7 +110,12 @@ function Cart() {
               ))}
           </div>
           <div className={classes.cart}>
-            <Typography variant="h5">Total: ${cart.cartTotalAmount}</Typography>
+            <Typography variant="h5" className={classes.content}>
+              Total: ${cart.cartTotalAmount}
+            </Typography>
+            <Link href="/">
+              <Typography>Continue Shopping</Typography>
+            </Link>
             <Button
               className={classes.button}
               onClick={() => handleClearCart()}
@@ -118,11 +123,6 @@ function Cart() {
               Clear Cart
             </Button>
             <Button className={classes.button}>Check out</Button>
-            <Link href="/">
-              <Typography sx={{ marginBottom: "10" }}>
-                Continue Shopping
-              </Typography>
-            </Link>
           </div>
         </div>
       )}
