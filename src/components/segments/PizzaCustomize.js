@@ -13,7 +13,7 @@ import { addToCart } from "../../redux/slices/cartSlice";
 
 const useStyles = makeStyles(pageStyles);
 
-function PizzaCustomize({ selectedPizzaId, onCancel }) {
+function PizzaCustomize({ onCancel, selectedPizzaId }) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
@@ -50,7 +50,7 @@ function PizzaCustomize({ selectedPizzaId, onCancel }) {
         <Button
           size="small"
           className={classes.button}
-          onClick={handleAddToCart(pizza)}
+          onClick={() => handleAddToCart(pizza)}
         >
           Add to cart
         </Button>

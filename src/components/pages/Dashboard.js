@@ -42,7 +42,7 @@ function Dashboard() {
     setSelectedValue(selectedPizzaId);
   };
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
   };
   return (

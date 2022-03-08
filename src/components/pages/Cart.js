@@ -45,7 +45,7 @@ function Cart() {
   };
   return (
     <div>
-      {cart.cartItems.length === 0 ? (
+     { cart.cartItems.length === 0 ? (
         <div className={classes.content}>
           <Typography variant="h3">Your cart is currently empty!</Typography>
           <Link href="/">
@@ -53,9 +53,11 @@ function Cart() {
           </Link>
         </div>
       ) : (
+        
         <div>
           <div>
-            {cart.cartItems &&
+            {
+            cart.cartItems &&
               cart.cartItems.map((cartItem) => (
                 <Card key={cartItem.id} className={classes.root}>
                   <CardMedia
@@ -85,7 +87,7 @@ function Cart() {
                     <Button
                       size="small"
                       className={classes.button}
-                      onClick={() => handleAddToCart(cartItem.id)}
+                      onClick={() => handleAddToCart(cartItem)}
                     >
                       +
                     </Button>
