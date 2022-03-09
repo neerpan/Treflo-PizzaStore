@@ -80,6 +80,15 @@ function Cart() {
                       Price: ${cartItem.price}
                     </Typography>
                     <Typography align="center">
+                      Quantity: {cartItem.cartQuantity}
+                    </Typography>
+                    <Typography align="center">
+                      {cartItem.size}
+                    </Typography>
+                    <Typography align="center">
+                      {cartItem.toppings}
+                    </Typography>
+                    <Typography align="center">
                       {cartItem.isVeg ? "Vegetarian" : "Non-Vegetarian"}
                     </Typography>
                   </CardContent>
@@ -94,14 +103,14 @@ function Cart() {
                     <Button
                       size="small"
                       className={classes.button}
-                      onClick={() => handleDecreaseCart(cartItem.id)}
+                      onClick={() => handleDecreaseCart(cartItem)}
                     >
                       -
                     </Button>
                     <Button
                       size="small"
                       className={classes.button}
-                      onClick={() => handleRemoveFromCart(cartItem.id)}
+                      onClick={() => handleRemoveFromCart(cartItem)}
                     >
                       Remove
                     </Button>

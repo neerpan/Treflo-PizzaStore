@@ -14,10 +14,25 @@ import { addToCart } from "../../redux/slices/cartSlice";
 const useStyles = makeStyles(pageStyles);
 
 function PizzaCustomize({ onCancel, selectedPizzaId }) {
+  const [size, setSize] = React.useState("");
+  const [toppings, setToppings] = React.useState("");
   const classes = useStyles();
   const dispatch = useDispatch();
+  const handleSize = (e) => {
+    setSize(e.target.value);
+    
+  };
+  const handleTooping = (e) => {
+    setToppings(e.target.value);
+  }
   const handleAddToCart = (product) => {
+    product = {
+      ...product,
+      size:size,
+      toppings:toppings
+    };
     dispatch(addToCart(product));
+    onCancel();
   };
   const { pizzas } = useSelector(pizzaSelector);
   const pizza = pizzas.filter((pizza) => pizza.id === selectedPizzaId)[0];
@@ -25,26 +40,31 @@ function PizzaCustomize({ onCancel, selectedPizzaId }) {
   return (
     <FormControl>
       <FormLabel id="sizes">Size - </FormLabel>
-      <RadioGroup aria-labelledby="sizes" name="size">
+      <RadioGroup aria-labelledby="sizes" name="size" onChange={handleSize}>
         {pizza.size[0].items.map((size) => (
           <FormControlLabel
             value={size.size}
             control={<Radio />}
             label={size.size}
+            // onChange={handleSize(pizza,EventTarget.value)}
+
           />
         ))}
       </RadioGroup>
       <br />
       <FormLabel id="toppings">Toppings - </FormLabel>
-      <RadioGroup aria-labelledby="toppings" name="topping">
+      
+       <RadioGroup aria-labelledby="toppings" name="topping" >
         {pizza.toppings[0].items.map((topping) => (
           <FormControlLabel
             value={topping.name}
+            name = "topping"
             control={pizza.toppings[0].isRadio ? <Radio /> : <Checkbox />}
             label={topping.name}
+            onChange={handleTooping}
           />
         ))}
-      </RadioGroup>
+       </RadioGroup> 
       <br />
       <div>
         <Button
